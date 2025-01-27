@@ -53,7 +53,7 @@ function french_typography_filter_preprocess_field(&$variables) {
   $field_display = $entity_display->getComponent($field_name);
 
   if (isset($field_display['third_party_settings']['french_typography_filter']['french_typo'])) {
-    if($field_display['third_party_settings']['french_typography_filter']['french_typo'] === TRUE) {
+    if($field_display['third_party_settings']['french_typography_filter']['french_typo'] === '1') {
       foreach($variables['items'] as $key => $item) {
         $variables['items'][$key]['content']['#context']['value'] =
           Correcteur::corriger($item['content']['#context']['value'], TRUE);
