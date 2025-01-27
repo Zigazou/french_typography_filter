@@ -29,7 +29,10 @@ function french_typography_filter_field_formatter_third_party_settings_form($plu
   $element['french_typo'] = [
     '#type' => 'checkbox',
     '#title' => t('French typography filter'),
-    '#default_value' => $plugin->getThirdPartySetting('french_typography_filter', 'stripped'),
+    '#default_value' => $plugin->getThirdPartySetting(
+      'french_typography_filter',
+      'french_typo'
+    ),
   ];
   return $element;
 }
@@ -50,9 +53,11 @@ function french_typography_filter_preprocess_field(&$variables) {
   $field_display = $entity_display->getComponent($field_name);
 
   if (isset($field_display['third_party_settings']['french_typography_filter']['french_typo'])) {
-    foreach($variables['items'] as $key => $item) {
-      $variables['items'][$key]['content']['#context']['value'] =
-        Correcteur::corriger($item['content']['#context']['value'], TRUE);
+    if($field_display['third_party_settings']['french_typography_filter']['french_typo'] === TRUE) {
+      foreach($variables['items'] as $key => $item) {
+        $variables['items'][$key]['content']['#context']['value'] =
+          Correcteur::corriger($item['content']['#context']['value'], TRUE);
+      }
     }
   }
 }
