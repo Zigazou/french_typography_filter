@@ -1,7 +1,7 @@
 {
     "name": "drupal/french_typography_filter",
     "description": "Defines a formatter and a filter applying french typography to text.",
-    "type": "drupal-module",
+    "type": "drupal-custom-module",
     "authors": [
         {
             "name": "Frédéric Bisson",
