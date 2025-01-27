@@ -1,0 +1,17 @@
+{
+    "name": "drupal/french_typography_filter",
+    "description": "Defines a formatter and a filter applying french typography to text.",
+    "type": "drupal-module",
+    "authors": [
+        {
+            "name": "Frédéric Bisson",
+            "homepage": "https://www.drupal.org/u/zigazou",
+            "role": "Maintainer"
+        }
+    ],
+    "license": "GPL-3.0+",
+    "minimum-stability": "dev",
+    "require": {
+        "zigazou/french-typography": "^0.0.4"
+    }
+}

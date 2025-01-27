@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for French Typography Filter module.
+ */
+
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+use Zigazou\FrenchTypography\Correcteur;
+
+/**
+ * Implements hook_field_formatter_settings_summary_alter().
+ *
+ * Displays "Outer divs stripped" on formatter summary if enabled.
+ */
+function french_typography_filter_field_formatter_settings_summary_alter(&$summary, $context) {
+  if ($context['formatter']->getThirdPartySetting('french_typography_filter', 'french_typo')) {
+    $summary[] = t('French typography filter');
+  }
+}
+
+/**
+ * Implements hook_field_formatter_third_party_settings_form().
+ *
+ * Adds a parameter to any field formatter.
+ */
+function french_typography_filter_field_formatter_third_party_settings_form($plugin, $field_definition, $view_mode, $form, $form_state) {
+  $element = [];
+  $element['french_typo'] = [
+    '#type' => 'checkbox',
+    '#title' => t('French typography filter'),
+    '#default_value' => $plugin->getThirdPartySetting('french_typography_filter', 'stripped'),
+  ];
+  return $element;
+}
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ * Provides "french_typography_filter" variable in any field.html.twig and
+ * override.
+ */
+function french_typography_filter_preprocess_field(&$variables) {
+  $entity = $variables['element']['#object'];
+  $view_mode = $variables['element']['#view_mode'];
+  $field_name = $variables['element']['#field_name'];
+
+  // Get the field formatter settings...
+  $entity_display = EntityViewDisplay::collectRenderDisplay($entity, $view_mode);
+  $field_display = $entity_display->getComponent($field_name);
+
+  if (isset($field_display['third_party_settings']['french_typography_filter']['french_typo'])) {
+    foreach($variables['items'] as $key => $item) {
+      $variables['items'][$key]['content']['#context']['value'] =
+        Correcteur::corriger($item['content']['#context']['value'], TRUE);
+    }
+  }
+}

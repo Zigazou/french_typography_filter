@@ -1,0 +1,6 @@
+name: 'French typography filter'
+type: module
+description: 'Defines a formatter and a filter applying french typography to text.'
+package: Fields
+core_version_requirement: ^10 || ^11
+version: "1.0"

@@ -1,0 +1,31 @@
+# French translation of French Typography formatter (1.0)
+# Copyright (c) 2023 by Frédéric BISSON
+# Frédéric BISSON <zigazou@protonmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: French typography formatter (1.0)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+"Last-Translator: Frédéric BISSON <zigazou@protonmail.com>\n"
+"Language-Team: Français <>\n"
+"Language: fr\n"
+"PO-Revision-Date: 2025-01-17 12:00+0100\n"
+"X-Generator: Gtranslator 42.0\n"
+
+msgid "French phone link"
+msgstr "Lien de téléphone français"
+
+msgid "Apply french typography"
+msgstr "Applique la typographie française"
+
+msgid "Apply french typography to the text."
+msgstr "Applique la typographie française au texte."
+
+msgid "Defines a formatter and a filter applying french typography to text."
+msgstr "Définit un formateur et un filtre pour appliquer la typographie française à du texte."
+
+msgid "French typography filter"
+msgstr "Filtre de typographie française"
