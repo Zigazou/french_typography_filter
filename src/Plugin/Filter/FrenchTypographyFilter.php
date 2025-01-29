@@ -2,7 +2,6 @@
 
 namespace Drupal\french_typography_filter\Plugin\Filter;
 
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\filter\FilterProcessResult;
 use Drupal\filter\Plugin\FilterBase;
 use Zigazou\FrenchTypography\Correcteur;
