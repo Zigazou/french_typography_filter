@@ -12,6 +12,6 @@
     "license": "GPL-3.0+",
     "minimum-stability": "dev",
     "require": {
-        "zigazou/french-typography": "^0.0.4"
+        "zigazou/french-typography": "^0.0.5"
     }
 }
