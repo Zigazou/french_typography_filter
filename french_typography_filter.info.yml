@@ -4,3 +4,5 @@ description: 'Defines a formatter and a filter applying french typography to tex
 package: Fields
 core_version_requirement: ^10 || ^11
 version: "1.0"
+interface translation project: 'french_typography_filter'
+interface translation server pattern: 'modules/custom/%project/translations/%language.po'
