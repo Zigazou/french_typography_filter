@@ -54,13 +54,16 @@ function french_typography_filter_preprocess_field(&$variables) {
 
   if (isset($field_display['third_party_settings']['french_typography_filter']['french_typo'])) {
     if($field_display['third_party_settings']['french_typography_filter']['french_typo'] === '1') {
+      $plain_field_types = ['string', 'string_long'];
+      $is_html = !in_array($variables['element']['#field_type'], $plain_field_types);
+
       foreach($variables['items'] as $key => $item) {
         if (isset($item['content']['#context']['value']) === FALSE) {
           continue;
         }
 
         $variables['items'][$key]['content']['#context']['value'] =
-          Correcteur::corriger($item['content']['#context']['value'], TRUE);
+          Correcteur::corriger($item['content']['#context']['value'], $is_html);
       }
     }
   }
