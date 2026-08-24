@@ -10,6 +10,9 @@ use Drupal\Core\Field\FormatterInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Render\Markup;
+use Drupal\Component\Utility\Xss;
+
 use Zigazou\FrenchTypography\Correcteur;
 
 /**
@@ -99,6 +102,37 @@ final class FrenchTypographyFilterHooks {
           $is_html,
         );
     }
+  }
+
+  /**
+   * Implements hook_preprocess_page_title().
+   */
+  #[Hook('preprocess_page_title')]
+  public function preprocessPageTitle(array &$variables): void {
+    // Check if the title is empty.
+    if (empty($variables['title'])) {
+      return;
+    }
+
+    // Check if the current language is french.
+    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+    if ($langcode !== 'fr') {
+      return;
+    }
+
+    $title = (string) $variables['title'];
+
+    // Apply french typography.
+    $title = Correcteur::corriger($title, TRUE);
+
+    // Only allow necessary HTML.
+    $title = Xss::filter($title, [
+      'sup', 'sub', 'em', 'strong', 'span',
+    ]);
+
+    // Prevent Twig from re-escaping the title.
+    $variables['title'] = Markup::create($title);
   }
 
 }
