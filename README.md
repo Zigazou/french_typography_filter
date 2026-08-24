@@ -16,7 +16,7 @@ adhere to French typographic rules.
 
 ## Requirements
 
-- Drupal 10 or higher
+- Drupal 11.2 or higher
 
 ## Configuration
 

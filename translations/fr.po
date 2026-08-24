@@ -29,3 +29,6 @@ msgstr "Définit un formateur et un filtre pour appliquer la typographie frança
 
 msgid "French typography filter"
 msgstr "Filtre de typographie française"
+
+msgid "French typography"
+msgstr "Typographie française"
