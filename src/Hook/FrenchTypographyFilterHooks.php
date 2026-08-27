@@ -121,6 +121,11 @@ final class FrenchTypographyFilterHooks {
       return;
     }
 
+    // If the title is a render array, do not apply the filter.
+    if (is_array($variables['title'])) {
+      return;
+    }
+
     $title = (string) $variables['title'];
 
     // Apply french typography.
