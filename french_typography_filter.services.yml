@@ -1,0 +1,5 @@
+services:
+  french_typography_filter.twig_extension:
+    class: Drupal\french_typography_filter\Twig\FrenchTypographyTwigExtension
+    tags:
+      - { name: twig.extension }
